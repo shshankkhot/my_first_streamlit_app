@@ -4,7 +4,7 @@ import random
 import altair as alt
 import numpy as np
 import pandas as pd
-from vega_datasets import data
+#from vega_datasets import data
 
 st.header('Homework 1')
 
@@ -101,9 +101,14 @@ The 2 changes I made were:
 """
 )
 
-source = data.cars()
+#source = data.cars()
+#pd_src = pd.DataFrame(source)
+#pd_src.to_csv('cars.csv', encoding='utf-8')
+
+cars= pd.read_csv('cars.csv')
+
 #st.write(source)
-strip = alt.Chart(source).mark_tick().encode(
+strip = alt.Chart(cars).mark_tick().encode(
     x='Horsepower:Q',
     y='Cylinders:O',
     color='Cylinders:N',
@@ -112,4 +117,4 @@ strip = alt.Chart(source).mark_tick().encode(
 st.altair_chart(strip, use_container_width=True)
 
 st.markdown('**Data source used for above chart:**')
-st.write(source)
+st.write(cars)
